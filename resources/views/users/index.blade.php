@@ -24,6 +24,7 @@
                 {{ $user->email }}
                 | <a href="{{ route('users.show', ['id' => $user->id])}}">Visualizar</a>
                 | <a href="{{ route('users.edit', ['id' => $user->id])}}">Editar</a>
+                | <a href="{{ route('comments.index', ['id' => $user->id])}}">Comentários ({{ $user->comments->count() }})</a>
                 
                 | <form action="{{ route('users.destroy', $user->id)}}" method="POST" >
                     @csrf
