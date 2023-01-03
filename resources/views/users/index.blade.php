@@ -20,6 +20,12 @@
     <ul>
         @foreach($users as $user)
             <li>
+                @if ($user->image)
+                    <img src="{{ url("storage/{$user->image}") }}" alt="{{$user->image}}" style="width:10rem; heigth: 10rem;">
+                @else
+                    <img src="{{ url("storage/app/public/users/defaut.jpg") }}" alt="{{$user->image}}" style="width:10rem; heigth: 10rem;">
+                @endif
+                
                 {{ $user->name }} - 
                 {{ $user->email }}
                 | <a href="{{ route('users.show', ['id' => $user->id])}}">Visualizar</a>
@@ -35,5 +41,11 @@
             
         @endforeach
     </ul>
+
+    <div class="py-4">
+        {{ $users->appends([
+            'search' => request()->get('search', '')
+        ])->links() }}
+    </div>
 
 @endsection

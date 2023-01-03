@@ -36,7 +36,12 @@ class StoreUpdateFormRequest extends FormRequest
                 'required',
                 'min:6',
                 'max: 15',  
-            ]
+            ],
+            'image' => [
+                'nullable',
+                'image',
+                'max:5000'
+            ],
         ];
 
         if( $this->method() == 'PUT'){
